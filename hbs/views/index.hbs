@@ -17,6 +17,7 @@
       crossorigin="anonymous"/>
   </head>
   <body>
+    
     <!--
        Some browsers' autoplay policy requires that an AudioContext be initialized
        during an input event in order to correctly synchronize.
@@ -24,14 +25,21 @@
   -->
     {{!-- <button id="startbutton">Press to load tracks</button> --}}
     <div class="main">
+      <button type="button" class="btn btn-play tape-controls-play" id="btn-play" style="display: inline" data-playing="false" role="switch"
+          aria-checked="false" style="position: absolute; top: 20px; left:20px">
+            <span><i class="fa-solid fa-circle-play fa-3x fa-inverse"></i></span>
+          </button>
+          <button type="button" class="btn btn-pause" id="btn-pause" style="display: none" style="position: absolute; top: 20px; left: 20px">
+            <span><i class="fa-solid fa-circle-pause fa-3x fa-inverse"></i></span>
+          </button>
       <!-- audio player -->
       <!-- play / pause -->
       <!-- volume up /down  -->
       <!--  -->
 
-      <div id="acoustic-guitar" width="200" height="200" style="position: absolute; top: 20%; left: 43%;">
+      <div id="acoustic-guitar" width="200" height="200" style="position: absolute; top: 10%; left: 43%;">
         <div id="acoustic-guitar-controls">
-        <img src="/images/acoustic_guitar.png" width="100" style="position: absolute; top: 40px; left: 50px">
+        <img src="/images/acoustic_guitar.png" width="110" style="position: absolute; top: 40px; left: 50px">
         {{!-- up --}}
         {{!-- down --}}
         {{!-- left  --}}
@@ -48,7 +56,7 @@
             <span id="right-label" style="display: none">Right</span>
             <i class="fa-solid fa-arrow-right fa-inverse fa-2x"></i>
           </button>
-          <button data-control="down" aria-labelledby="move-acoustic-guitar down-label" style="background-color: transparent; border: none; position: absolute; top: 170px; left: 80px">
+          <button data-control="down" aria-labelledby="move-acoustic-guitar down-label" style="background-color: transparent; border: none; position: absolute; top: 165px; left: 80px">
             <span id="down-label" style="display: none">Down</span>
             <i class="fa-solid fa-arrow-down fa-inverse fa-2x"></i>
           </button>
@@ -56,17 +64,11 @@
         {{!-- play / pause --}}
         {{!--  volume --}}
         <div class="player-acoustic-guitar" style="position: absolute; top: 40px; left: 50px">
-        <div class="player-btn" style="position: absolute; top: 7px; left: 10px; opacity: 50% !important" >
+        <div class="player-btn" style="position: absolute; top: 7px; left: 10px; " >
           <!-- loaded audio -->
-          <audio src="/sounds/multi-track_leadguitar.mp3" crossOrigin="anonymous"></audio>
+          <audio class="audio" id="audio-acoustic-guitar" src="/sounds/multi-track_leadguitar.mp3" crossOrigin="anonymous"></audio>
     
-          <button type="button" class="btn btn-play tape-controls-play" id="btn-play" style="display: inline" data-playing="false" role="switch"
-          aria-checked="false" style="position: absolute; top: 0px; left:0px">
-            <span><i class="fa-solid fa-circle-play fa-3x fa-inverse"></i></span>
-          </button>
-          <button type="button" class="btn btn-pause" id="btn-pause" style="display: none" style="position: absolute; top: 0px; left: 0px">
-            <span><i class="fa-solid fa-circle-pause fa-3x fa-inverse"></i></span>
-          </button>
+          
           </div>
           <script>
             const playbtn = document.getElementById('btn-play');
@@ -100,11 +102,11 @@
     </div>    
       </div>
 
-{{!-- clavi --}}
 
-      <div id="clav" width="200" height="200" style="position: absolute; top: 60%; left: 43%;">
+{{!-- clav --}}
+      <div id="clav" width="200" height="200" style="position: absolute; top: 50%; left: 43%;">
         <div id="clav-controls">
-        <img src="/images/midi.png" width="100" style="position: absolute; top: 72px; left: 47px">
+        <img src="/images/midi.png" width="110" style="position: absolute; top: 65px; left: 41px">
         {{!-- up --}}
         {{!-- down --}}
         {{!-- left  --}}
@@ -113,7 +115,7 @@
             <span id="left-label" style="display: none">Left</span>
             <i class="fa-solid fa-arrow-left fa-inverse fa-2x"></i>
           </button>
-          <button data-control="up" aria-labelledby="move-clav up-label" style="background-color: transparent; border: none; position: absolute; top: 0px; left: 80px">
+          <button data-control="up" aria-labelledby="move-clav up-label" style="background-color: transparent; border: none; position: absolute; top: 10px; left: 80px">
             <span id="up-label" style="display: none">Up</span>
             <i class="fa-solid fa-arrow-up fa-inverse fa-2x"></i>
           </button>
@@ -121,7 +123,7 @@
             <span id="right-label" style="display: none">Right</span>
             <i class="fa-solid fa-arrow-right fa-inverse fa-2x"></i>
           </button>
-          <button data-control="down" aria-labelledby="move-clav down-label" style="background-color: transparent; border: none; position: absolute; top: 170px; left: 80px">
+          <button data-control="down" aria-labelledby="move-clav down-label" style="background-color: transparent; border: none; position: absolute; top: 140px; left: 80px">
             <span id="down-label" style="display: none">Down</span>
             <i class="fa-solid fa-arrow-down fa-inverse fa-2x"></i>
           </button>
@@ -129,15 +131,15 @@
         {{!-- play / pause --}}
         {{!--  volume --}}
         <div class="player-clav" style="position: absolute; top: 40px; left: 50px">
-        <div class="player-btn" style="position: absolute; top: 7px; left: 10px; opacity: 50% !important" >
+        <div class="player-btn" style="position: absolute; top: 7px; left: 10px; " >
           <!-- loaded audio -->
-          <audio src="/sounds/multi-track_clav.mp3" crossOrigin="anonymous"></audio>
+          <audio class="audio" id="audio-clav" src="/sounds/multi-track_clav.mp3" crossOrigin="anonymous"></audio>
     
-          <button type="button" class="btn btn-play1 tape-controls-play" id="btn-play" style="display: inline" data-playing="false" role="switch"
+          <button type="button" class="btn btn-play tape-controls-play" id="btn-play1" style="display: none;" data-playing="false" role="switch"
           aria-checked="false" style="position: absolute; top: 0px; left:0px">
             <span><i class="fa-solid fa-circle-play fa-3x fa-inverse"></i></span>
           </button>
-          <button type="button" class="btn btn-pause1" id="btn-pause" style="display: none" style="position: absolute; top: 0px; left: 0px">
+          <button type="button" class="btn btn-pause" id="btn-pause1" style="display: none" style="position: absolute; top: 0px; left: 0px">
             <span><i class="fa-solid fa-circle-pause fa-3x fa-inverse"></i></span>
           </button>
           </div>
@@ -160,8 +162,8 @@
           <div style="background-color: transparent; border: none; position: absolute; top: 170px; left: -25px">
           <span style="display: inline !important; position: absolute; top: 2px; left: -25px"><i class="fa-solid fa-volume-low fa-inverse"></i></span>
 				
-          <input style="display: inline !important; width: 150px !important"  type="range" id="volume" class="control-volume" min="0" max="2" value="1" list="gain-vals" step="0.01" data-action="volume" />
-			<datalist id="gain-vals">
+          <input style="display: inline !important; width: 150px !important"  type="range" id="volume" class="control-volume-clav" min="0" max="2" value="1" list="gain-vals-clav" step="0.01" data-action="volume" />
+			<datalist id="gain-vals-clav">
         <option value="0" label="min"></option>
 				<option value="2" label="max"></option>
           
@@ -172,7 +174,152 @@
       </div>
     </div>    
       </div>
-      
+
+{{!-- drums --}}
+<div id="drums" width="200" height="200" style="position: absolute; top: 32%; left: 24%;">
+        <div id="drums-controls">
+        <img src="/images/drum_set.png" width="110" style="position: absolute; top: 65px; left: 41px">
+        {{!-- up --}}
+        {{!-- down --}}
+        {{!-- left  --}}
+        {{!-- right --}}
+        <button data-control="left" aria-labelledby="move-drums left-label" style="background-color: transparent; border: none; position: absolute; top: 80px; left: 0px">
+            <span id="left-label" style="display: none">Left</span>
+            <i class="fa-solid fa-arrow-left fa-inverse fa-2x"></i>
+          </button>
+          <button data-control="up" aria-labelledby="move-drums up-label" style="background-color: transparent; border: none; position: absolute; top: 10px; left: 80px">
+            <span id="up-label" style="display: none">Up</span>
+            <i class="fa-solid fa-arrow-up fa-inverse fa-2x"></i>
+          </button>
+          <button data-control="right" aria-labelledby="move-drums right-label" style="background-color: transparent; border: none; position: absolute; top: 80px; left: 150px">
+            <span id="right-label" style="display: none">Right</span>
+            <i class="fa-solid fa-arrow-right fa-inverse fa-2x"></i>
+          </button>
+          <button data-control="down" aria-labelledby="move-drums down-label" style="background-color: transparent; border: none; position: absolute; top: 160px; left: 80px">
+            <span id="down-label" style="display: none">Down</span>
+            <i class="fa-solid fa-arrow-down fa-inverse fa-2x"></i>
+          </button>
+        </div>
+        {{!-- play / pause --}}
+        {{!--  volume --}}
+        <div class="player-drums" style="position: absolute; top: 40px; left: 50px">
+        <div class="player-btn" style="position: absolute; top: 7px; left: 10px; " >
+          <!-- loaded audio -->
+          <audio class="audio" id="audio-drums" src="/sounds/multi-track_drums.mp3" crossOrigin="anonymous"></audio>
+    
+          <button type="button" class="btn btn-play tape-controls-play" id="btn-play2" style="display: none;" data-playing="false" role="switch"
+          aria-checked="false" style="position: absolute; top: 0px; left:0px">
+            <span><i class="fa-solid fa-circle-play fa-3x fa-inverse"></i></span>
+          </button>
+          <button type="button" class="btn btn-pause" id="btn-pause2" style="display: none" style="position: absolute; top: 0px; left: 0px">
+            <span><i class="fa-solid fa-circle-pause fa-3x fa-inverse"></i></span>
+          </button>
+          </div>
+          <script>
+            const playbtn2 = document.getElementById('btn-play2');
+            const pausebtn2 = document.getElementById('btn-pause2');
+            playbtn2.addEventListener('click', () => {
+            playbtn2.style.display = 'none';
+            pausebtn2.style.display = 'inline';
+          });
+          </script>
+          <script>
+            pausebtn2.addEventListener('click', () => {
+              pausebtn2.style.display = 'none';
+            playbtn2.style.display = 'inline';
+          });
+          </script>
+
+          <br>
+          <div style="background-color: transparent; border: none; position: absolute; top: 170px; left: -25px">
+          <span style="display: inline !important; position: absolute; top: 2px; left: -25px"><i class="fa-solid fa-volume-low fa-inverse"></i></span>
+				
+          <input style="display: inline !important; width: 150px !important"  type="range" id="volume" class="control-volume-drums" min="0" max="2" value="1" list="gain-vals-clav" step="0.01" data-action="volume" />
+			<datalist id="gain-vals-clav">
+        <option value="0" label="min"></option>
+				<option value="2" label="max"></option>
+          
+			</datalist>
+      <span style="display: inline !important; position: absolute; top: 2px; left: 160px"><i class="fa-solid fa-volume-high fa-inverse"></i>  
+        
+        </div>
+      </div>
+    </div>    
+      </div>
+
+
+      {{!-- horns --}}
+<div id="horns" width="200" height="200" style="position: absolute; top: 32%; left: 62%;">
+        <div id="horns-controls">
+        <img src="/images/horn.png" width="90" style="position: absolute; top: 65px; left: 45px">
+        {{!-- up --}}
+        {{!-- down --}}
+        {{!-- left  --}}
+        {{!-- right --}}
+        <button data-control="left" aria-labelledby="move-horns left-label" style="background-color: transparent; border: none; position: absolute; top: 80px; left: 0px">
+            <span id="left-label" style="display: none">Left</span>
+            <i class="fa-solid fa-arrow-left fa-inverse fa-2x"></i>
+          </button>
+          <button data-control="up" aria-labelledby="move-horns up-label" style="background-color: transparent; border: none; position: absolute; top: 10px; left: 80px">
+            <span id="up-label" style="display: none">Up</span>
+            <i class="fa-solid fa-arrow-up fa-inverse fa-2x"></i>
+          </button>
+          <button data-control="right" aria-labelledby="move-horns right-label" style="background-color: transparent; border: none; position: absolute; top: 80px; left: 150px">
+            <span id="right-label" style="display: none">Right</span>
+            <i class="fa-solid fa-arrow-right fa-inverse fa-2x"></i>
+          </button>
+          <button data-control="down" aria-labelledby="move-horns down-label" style="background-color: transparent; border: none; position: absolute; top: 160px; left: 80px">
+            <span id="down-label" style="display: none">Down</span>
+            <i class="fa-solid fa-arrow-down fa-inverse fa-2x"></i>
+          </button>
+        </div>
+        {{!-- play / pause --}}
+        {{!--  volume --}}
+        <div class="player-horns" style="position: absolute; top: 40px; left: 50px">
+        <div class="player-btn" style="position: absolute; top: 7px; left: 10px; " >
+          <!-- loaded audio -->
+          <audio class="audio" id="audio-horns" src="/sounds/multi-track_horns.mp3" crossOrigin="anonymous"></audio>
+    
+          <button type="button" class="btn btn-play tape-controls-play" id="btn-play3" style="display: none;" data-playing="false" role="switch"
+          aria-checked="false" style="position: absolute; top: 0px; left:0px">
+            <span><i class="fa-solid fa-circle-play fa-3x fa-inverse"></i></span>
+          </button>
+          <button type="button" class="btn btn-pause" id="btn-pause3" style="display: none" style="position: absolute; top: 0px; left: 0px">
+            <span><i class="fa-solid fa-circle-pause fa-3x fa-inverse"></i></span>
+          </button>
+          </div>
+          <script>
+            const playbtn3 = document.getElementById('btn-play3');
+            const pausebtn3 = document.getElementById('btn-pause3');
+            playbtn3.addEventListener('click', () => {
+            playbtn3.style.display = 'none';
+            pausebtn3.style.display = 'inline';
+          });
+          </script>
+          <script>
+            pausebtn3.addEventListener('click', () => {
+              pausebtn3.style.display = 'none';
+            playbtn3.style.display = 'inline';
+          });
+          </script>
+
+          <br>
+          <div style="background-color: transparent; border: none; position: absolute; top: 170px; left: -25px">
+          <span style="display: inline !important; position: absolute; top: 2px; left: -25px"><i class="fa-solid fa-volume-low fa-inverse"></i></span>
+				
+          <input style="display: inline !important; width: 150px !important"  type="range" id="volume" class="control-volume-horns" min="0" max="2" value="1" list="gain-vals-clav" step="0.01" data-action="volume" />
+			<datalist id="gain-vals-clav">
+        <option value="0" label="min"></option>
+				<option value="2" label="max"></option>
+          
+			</datalist>
+      <span style="display: inline !important; position: absolute; top: 2px; left: 160px"><i class="fa-solid fa-volume-high fa-inverse"></i>  
+        
+        </div>
+      </div>
+    </div>    
+      </div>
+
 
       <div id="boombox" style="display: none">
         <div class="boombox-body">
@@ -313,8 +460,44 @@ function init() {
 
   const boombox = document.querySelector("#acoustic-guitar");
 
+  const moveControls1 = document.querySelector("#clav-controls").querySelectorAll("button");
+
+  const boombox1 = document.querySelector("#clav");
+
+  const moveControls2 = document.querySelector("#drums-controls").querySelectorAll("button");
+
+  const boombox2 = document.querySelector("#drums");
+
+  const moveControls3 = document.querySelector("#horns-controls").querySelectorAll("button");
+
+  const boombox3 = document.querySelector("#horns");
+
   // Variable storing the current transform (modified by the buttons)
   let transform = {
+    xAxis: 0,
+    yAxis: 0,
+    zAxis: 0.8,
+    rotateX: 0,
+    rotateY: 0,
+  };
+
+  let transform1 = {
+    xAxis: 0,
+    yAxis: 0,
+    zAxis: 0.8,
+    rotateX: 0,
+    rotateY: 0,
+  };
+
+  let transform2 = {
+    xAxis: 0,
+    yAxis: 0,
+    zAxis: 0.8,
+    rotateX: 0,
+    rotateY: 0,
+  };
+
+  let transform3 = {
     xAxis: 0,
     yAxis: 0,
     zAxis: 0.8,
@@ -345,6 +528,57 @@ const outerGain = 0.3;
 
   // Define the boombox panner
   const panner = new PannerNode(audioCtx, {
+    panningModel: "HRTF",
+    distanceModel: "linear",
+    positionX: posX,
+    positionY: posY,
+    positionZ: posZ,
+    orientationX: 0.0,
+    orientationY: 0.0,
+    orientationZ: -1.0,
+    refDistance: 1,
+    maxDistance: 20_000,
+    rolloffFactor: 10,
+    coneInnerAngle: innerCone,
+    coneOuterAngle: outerCone,
+    coneOuterGain: outerGain,
+  });
+
+  const panner1 = new PannerNode(audioCtx, {
+    panningModel: "HRTF",
+    distanceModel: "linear",
+    positionX: posX,
+    positionY: posY,
+    positionZ: posZ,
+    orientationX: 0.0,
+    orientationY: 0.0,
+    orientationZ: -1.0,
+    refDistance: 1,
+    maxDistance: 20_000,
+    rolloffFactor: 10,
+    coneInnerAngle: innerCone,
+    coneOuterAngle: outerCone,
+    coneOuterGain: outerGain,
+  });
+
+  const panner2 = new PannerNode(audioCtx, {
+    panningModel: "HRTF",
+    distanceModel: "linear",
+    positionX: posX,
+    positionY: posY,
+    positionZ: posZ,
+    orientationX: 0.0,
+    orientationY: 0.0,
+    orientationZ: -1.0,
+    refDistance: 1,
+    maxDistance: 20_000,
+    rolloffFactor: 10,
+    coneInnerAngle: innerCone,
+    coneOuterAngle: outerCone,
+    coneOuterGain: outerGain,
+  });
+
+  const panner3 = new PannerNode(audioCtx, {
     panningModel: "HRTF",
     distanceModel: "linear",
     positionX: posX,
@@ -471,6 +705,338 @@ const outerGain = 0.3;
     return move;
   }
 
+  //clav
+
+function moveBoombox1(direction1, prevMove1) {
+    switch (direction1) {
+      case "left":
+        if (transform1.xAxis > leftBound) {
+          transform1.xAxis -= 5;
+          panner1.positionX.value -= 0.07;
+        }
+        break;
+      case "up":
+        if (transform1.yAxis > topBound) {
+          transform1.yAxis -= 5;
+          panner1.positionY.value -= 0.3;
+        }
+        break;
+      case "right":
+        if (transform1.xAxis < rightBound) {
+          transform1.xAxis += 5;
+          panner1.positionX.value += 0.07;
+        }
+        break;
+      case "down":
+        if (transform1.yAxis < bottomBound) {
+          transform1.yAxis += 5;
+          panner1.positionY.value += 0.3;
+        }
+        break;
+      case "back":
+        if (transform.zAxis > innerBound) {
+          transform.zAxis -= 0.01;
+          panner.positionZ.value -= 100;
+        }
+        break;
+      case "forward":
+        if (transform.zAxis < outerBound) {
+          transform.zAxis += 0.01;
+          panner.positionZ.value += 100;
+        }
+        break;
+      case "rotate-right":
+        transform.rotateY += degreesY;
+
+        // 'left' is rotation about y-axis with negative angle increment
+        z =
+          panner.orientationZ.value * Math.cos(-q) -
+          panner.orientationX.value * Math.sin(-q);
+        x =
+          panner.orientationZ.value * Math.sin(-q) +
+          panner.orientationX.value * Math.cos(-q);
+        y = panner.orientationY.value;
+
+        panner.orientationX.value = x;
+        panner.orientationY.value = y;
+        panner.orientationZ.value = z;
+        break;
+      case "rotate-left":
+        transform.rotateY -= degreesY;
+        // 'right' is rotation about y-axis with positive angle increment
+        z =
+          panner.orientationZ.value * Math.cos(q) -
+          panner.orientationX.value * Math.sin(q);
+        x =
+          panner.orientationZ.value * Math.sin(q) +
+          panner.orientationX.value * Math.cos(q);
+        y = panner.orientationY.value;
+        panner.orientationX.value = x;
+        panner.orientationY.value = y;
+        panner.orientationZ.value = z;
+        break;
+      case "rotate-up":
+        transform.rotateX += degreesX;
+        // 'up' is rotation about x-axis with negative angle increment
+        z =
+          panner.orientationZ.value * Math.cos(-q) -
+          panner.orientationY.value * Math.sin(-q);
+        y =
+          panner.orientationZ.value * Math.sin(-q) +
+          panner.orientationY.value * Math.cos(-q);
+        x = panner.orientationX.value;
+        panner.orientationX.value = x;
+        panner.orientationY.value = y;
+        panner.orientationZ.value = z;
+        break;
+      case "rotate-down":
+        transform.rotateX -= degreesX;
+        // 'down' is rotation about x-axis with positive angle increment
+        z =
+          panner.orientationZ.value * Math.cos(q) -
+          panner.orientationY.value * Math.sin(q);
+        y =
+          panner.orientationZ.value * Math.sin(q) +
+          panner.orientationY.value * Math.cos(q);
+        x = panner.orientationX.value;
+        panner.orientationX.value = x;
+        panner.orientationY.value = y;
+        panner.orientationZ.value = z;
+        break;
+    }
+
+    boombox1.style.transform =
+      `translateX(${transform1.xAxis}px) translateY(${transform1.yAxis}px) scale(${transform1.zAxis}) ` +
+      `rotateY(${transform1.rotateY}deg) rotateX(${transform1.rotateX}deg)`;
+
+    const move1 = prevMove1 || {};
+    move1.frameId = requestAnimationFrame(() =>
+      moveBoombox1(direction1, move1)
+    );
+    return move1;
+  }
+
+
+function moveBoombox2(direction2, prevMove2) {
+    switch (direction2) {
+      case "left":
+        if (transform2.xAxis > leftBound) {
+          transform2.xAxis -= 5;
+          panner2.positionX.value -= 0.07;
+        }
+        break;
+      case "up":
+        if (transform2.yAxis > topBound) {
+          transform2.yAxis -= 5;
+          panner2.positionY.value -= 0.3;
+        }
+        break;
+      case "right":
+        if (transform2.xAxis < rightBound) {
+          transform2.xAxis += 5;
+          panner2.positionX.value += 0.07;
+        }
+        break;
+      case "down":
+        if (transform2.yAxis < bottomBound) {
+          transform2.yAxis += 5;
+          panner2.positionY.value += 0.3;
+        }
+        break;
+      case "back":
+        if (transform.zAxis > innerBound) {
+          transform.zAxis -= 0.01;
+          panner.positionZ.value -= 100;
+        }
+        break;
+      case "forward":
+        if (transform.zAxis < outerBound) {
+          transform.zAxis += 0.01;
+          panner.positionZ.value += 100;
+        }
+        break;
+      case "rotate-right":
+        transform.rotateY += degreesY;
+
+        // 'left' is rotation about y-axis with negative angle increment
+        z =
+          panner.orientationZ.value * Math.cos(-q) -
+          panner.orientationX.value * Math.sin(-q);
+        x =
+          panner.orientationZ.value * Math.sin(-q) +
+          panner.orientationX.value * Math.cos(-q);
+        y = panner.orientationY.value;
+
+        panner.orientationX.value = x;
+        panner.orientationY.value = y;
+        panner.orientationZ.value = z;
+        break;
+      case "rotate-left":
+        transform.rotateY -= degreesY;
+        // 'right' is rotation about y-axis with positive angle increment
+        z =
+          panner.orientationZ.value * Math.cos(q) -
+          panner.orientationX.value * Math.sin(q);
+        x =
+          panner.orientationZ.value * Math.sin(q) +
+          panner.orientationX.value * Math.cos(q);
+        y = panner.orientationY.value;
+        panner.orientationX.value = x;
+        panner.orientationY.value = y;
+        panner.orientationZ.value = z;
+        break;
+      case "rotate-up":
+        transform.rotateX += degreesX;
+        // 'up' is rotation about x-axis with negative angle increment
+        z =
+          panner.orientationZ.value * Math.cos(-q) -
+          panner.orientationY.value * Math.sin(-q);
+        y =
+          panner.orientationZ.value * Math.sin(-q) +
+          panner.orientationY.value * Math.cos(-q);
+        x = panner.orientationX.value;
+        panner.orientationX.value = x;
+        panner.orientationY.value = y;
+        panner.orientationZ.value = z;
+        break;
+      case "rotate-down":
+        transform.rotateX -= degreesX;
+        // 'down' is rotation about x-axis with positive angle increment
+        z =
+          panner.orientationZ.value * Math.cos(q) -
+          panner.orientationY.value * Math.sin(q);
+        y =
+          panner.orientationZ.value * Math.sin(q) +
+          panner.orientationY.value * Math.cos(q);
+        x = panner.orientationX.value;
+        panner.orientationX.value = x;
+        panner.orientationY.value = y;
+        panner.orientationZ.value = z;
+        break;
+    }
+
+    boombox2.style.transform =
+      `translateX(${transform2.xAxis}px) translateY(${transform2.yAxis}px) scale(${transform2.zAxis}) ` +
+      `rotateY(${transform2.rotateY}deg) rotateX(${transform2.rotateX}deg)`;
+
+    const move2 = prevMove2 || {};
+    move2.frameId = requestAnimationFrame(() =>
+      moveBoombox2(direction2, move2)
+    );
+    return move2;
+  }
+
+  //horns
+
+function moveBoombox3(direction3, prevMove3) {
+    switch (direction3) {
+      case "left":
+        if (transform3.xAxis > leftBound) {
+          transform3.xAxis -= 5;
+          panner3.positionX.value -= 0.07;
+        }
+        break;
+      case "up":
+        if (transform3.yAxis > topBound) {
+          transform3.yAxis -= 5;
+          panner3.positionY.value -= 0.3;
+        }
+        break;
+      case "right":
+        if (transform3.xAxis < rightBound) {
+          transform3.xAxis += 5;
+          panner3.positionX.value += 0.07;
+        }
+        break;
+      case "down":
+        if (transform3.yAxis < bottomBound) {
+          transform3.yAxis += 5;
+          panner3.positionY.value += 0.3;
+        }
+        break;
+      case "back":
+        if (transform.zAxis > innerBound) {
+          transform.zAxis -= 0.01;
+          panner.positionZ.value -= 100;
+        }
+        break;
+      case "forward":
+        if (transform.zAxis < outerBound) {
+          transform.zAxis += 0.01;
+          panner.positionZ.value += 100;
+        }
+        break;
+      case "rotate-right":
+        transform.rotateY += degreesY;
+
+        // 'left' is rotation about y-axis with negative angle increment
+        z =
+          panner.orientationZ.value * Math.cos(-q) -
+          panner.orientationX.value * Math.sin(-q);
+        x =
+          panner.orientationZ.value * Math.sin(-q) +
+          panner.orientationX.value * Math.cos(-q);
+        y = panner.orientationY.value;
+
+        panner.orientationX.value = x;
+        panner.orientationY.value = y;
+        panner.orientationZ.value = z;
+        break;
+      case "rotate-left":
+        transform.rotateY -= degreesY;
+        // 'right' is rotation about y-axis with positive angle increment
+        z =
+          panner.orientationZ.value * Math.cos(q) -
+          panner.orientationX.value * Math.sin(q);
+        x =
+          panner.orientationZ.value * Math.sin(q) +
+          panner.orientationX.value * Math.cos(q);
+        y = panner.orientationY.value;
+        panner.orientationX.value = x;
+        panner.orientationY.value = y;
+        panner.orientationZ.value = z;
+        break;
+      case "rotate-up":
+        transform.rotateX += degreesX;
+        // 'up' is rotation about x-axis with negative angle increment
+        z =
+          panner.orientationZ.value * Math.cos(-q) -
+          panner.orientationY.value * Math.sin(-q);
+        y =
+          panner.orientationZ.value * Math.sin(-q) +
+          panner.orientationY.value * Math.cos(-q);
+        x = panner.orientationX.value;
+        panner.orientationX.value = x;
+        panner.orientationY.value = y;
+        panner.orientationZ.value = z;
+        break;
+      case "rotate-down":
+        transform.rotateX -= degreesX;
+        // 'down' is rotation about x-axis with positive angle increment
+        z =
+          panner.orientationZ.value * Math.cos(q) -
+          panner.orientationY.value * Math.sin(q);
+        y =
+          panner.orientationZ.value * Math.sin(q) +
+          panner.orientationY.value * Math.cos(q);
+        x = panner.orientationX.value;
+        panner.orientationX.value = x;
+        panner.orientationY.value = y;
+        panner.orientationZ.value = z;
+        break;
+    }
+
+    boombox3.style.transform =
+      `translateX(${transform3.xAxis}px) translateY(${transform3.yAxis}px) scale(${transform3.zAxis}) ` +
+      `rotateY(${transform3.rotateY}deg) rotateX(${transform3.rotateX}deg)`;
+
+    const move3 = prevMove3 || {};
+    move3.frameId = requestAnimationFrame(() =>
+      moveBoombox3(direction3, move3)
+    );
+    return move3;
+  }
+
   moveControls.forEach((el) => {
     let moving;
     el.addEventListener(
@@ -496,8 +1062,103 @@ const outerGain = 0.3;
     );
   });
 
+//clav controls
+  moveControls1.forEach((el1) => {
+    let moving1;
+    el1.addEventListener(
+      "mousedown",
+      () => {
+        let direction1 = el1.dataset.control;
+        if (moving1 && moving1.frameId) {
+          cancelAnimationFrame(moving1.frameId);
+        }
+        moving1 = moveBoombox1(direction1);
+      },
+      false
+    );
+
+    addEventListener(
+      "mouseup",
+      () => {
+        if (moving1 && moving1.frameId) {
+          cancelAnimationFrame(moving1.frameId);
+        }
+      },
+      false
+    );
+  });
+
+  moveControls2.forEach((el2) => {
+    let moving2;
+    el2.addEventListener(
+      "mousedown",
+      () => {
+        let direction2 = el2.dataset.control;
+        if (moving2 && moving2.frameId) {
+          cancelAnimationFrame(moving2.frameId);
+        }
+        moving2 = moveBoombox2(direction2);
+      },
+      false
+    );
+
+    addEventListener(
+      "mouseup",
+      () => {
+        if (moving2 && moving2.frameId) {
+          cancelAnimationFrame(moving2.frameId);
+        }
+      },
+      false
+    );
+  });
+
+  moveControls3.forEach((el3) => {
+    let moving3;
+    el3.addEventListener(
+      "mousedown",
+      () => {
+        let direction3 = el3.dataset.control;
+        if (moving3 && moving3.frameId) {
+          cancelAnimationFrame(moving3.frameId);
+        }
+        moving3 = moveBoombox3(direction3);
+      },
+      false
+    );
+
+    addEventListener(
+      "mouseup",
+      () => {
+        if (moving3 && moving3.frameId) {
+          cancelAnimationFrame(moving3.frameId);
+        }
+      },
+      false
+    );
+  });
+
   const track = new MediaElementAudioSourceNode(audioCtx, {
     mediaElement: audioElement,
+    
+    
+  });
+
+  const track1 = new MediaElementAudioSourceNode(audioCtx, {
+    mediaElement: audioElement1,
+    
+    
+  });
+
+  const track2 = new MediaElementAudioSourceNode(audioCtx, {
+    mediaElement: audioElement2,
+    
+    
+  });
+
+  const track3 = new MediaElementAudioSourceNode(audioCtx, {
+    mediaElement: audioElement3,
+    
     
   });
 
@@ -513,6 +1174,33 @@ const outerGain = 0.3;
     false
   );
 
+  audioElement1.addEventListener(
+    "ended",
+    () => {
+      playButton1.dataset.playing = "false";
+      playButton1.setAttribute("aria-checked", "false");
+    },
+    false
+  );
+
+  audioElement2.addEventListener(
+    "ended",
+    () => {
+      playButton2.dataset.playing = "false";
+      playButton2.setAttribute("aria-checked", "false");
+    },
+    false
+  );
+
+  audioElement3.addEventListener(
+    "ended",
+    () => {
+      playButton3.dataset.playing = "false";
+      playButton3.setAttribute("aria-checked", "false");
+    },
+    false
+  );
+
   // Create and control the volume slider
   const gainNode = new GainNode(audioCtx);
   const volumeControl = document.querySelector('.control-volume');
@@ -520,6 +1208,36 @@ const outerGain = 0.3;
     "input",
     () => {
       gainNode.gain.value = volumeControl.value;
+    },
+    false
+  );
+
+  const gainNode1 = new GainNode(audioCtx);
+  const volumeControl1 = document.querySelector('.control-volume-clav');
+  volumeControl1.addEventListener(
+    "input",
+    () => {
+      gainNode1.gain.value = volumeControl1.value;
+    },
+    false
+  );
+
+  const gainNode2 = new GainNode(audioCtx);
+  const volumeControl2 = document.querySelector('.control-volume-drums');
+  volumeControl2.addEventListener(
+    "input",
+    () => {
+      gainNode2.gain.value = volumeControl2.value;
+    },
+    false
+  );
+
+  const gainNode3 = new GainNode(audioCtx);
+  const volumeControl3 = document.querySelector('.control-volume-horns');
+  volumeControl3.addEventListener(
+    "input",
+    () => {
+      gainNode3.gain.value = volumeControl3.value;
     },
     false
   );
@@ -540,15 +1258,35 @@ const outerGain = 0.3;
     .connect(panner)
     .connect(stereoPanner)
     .connect(audioCtx.destination);
+  
+  track1.connect(gainNode1).connect(panner1).connect(audioCtx.destination);
+
+  track2.connect(gainNode2).connect(panner2).connect(audioCtx.destination);
+
+   track3.connect(gainNode3).connect(panner3).connect(audioCtx.destination);
 
   // Create and control the power button
   
 }
 
 // The boombox is an audio element with a play button
-const audioElement = document.querySelector("audio");
-const playButton = document.querySelector(".btn-play");
-const pauseButton = document.querySelector(".btn-pause");
+const audioElements = document.querySelectorAll(".audio");
+console.log(audioElements);
+const audioElement = document.querySelector("#audio-acoustic-guitar");
+const playButton = document.querySelector("#btn-play");
+const pauseButton = document.querySelector("#btn-pause");
+
+const audioElement1 = document.querySelector("#audio-clav");
+const playButton1 = document.querySelector("#btn-play1");
+const pauseButton1 = document.querySelector("#btn-pause1");
+
+const audioElement2 = document.querySelector("#audio-drums");
+const playButton2 = document.querySelector("#btn-play2");
+const pauseButton2 = document.querySelector("#btn-pause2");
+
+const audioElement3 = document.querySelector("#audio-horns");
+const playButton3 = document.querySelector("#btn-play3");
+const pauseButton3 = document.querySelector("#btn-pause3");
 
 // Play/pause the audio
 playButton.addEventListener(
@@ -566,10 +1304,16 @@ playButton.addEventListener(
 
     if (playButton.dataset.playing === "false") {
       audioElement.play();
+      audioElement1.play();
+      audioElement2.play();
+      audioElement3.play();
       playButton.dataset.playing = "true";
       // if track is playing pause it
     } else if (playButton.dataset.playing === "true") {
       audioElement.pause();
+      audioElement1.pause(); 
+      audioElement2.pause();
+      audioElement3.pause();
       playButton.dataset.playing = "false";
     }
 
@@ -593,10 +1337,16 @@ pauseButton.addEventListener(
 
     if (playButton.dataset.playing === "false") {
       audioElement.play();
+      audioElement1.play();
+      audioElement2.play();
+      audioElement3.play();
       playButton.dataset.playing = "true";
       // if track is playing pause it
     } else if (playButton.dataset.playing === "true") {
       audioElement.pause();
+      audioElement1.pause();
+      audioElement2.pause();
+      audioElement3.pause();
       playButton.dataset.playing = "false";
     }
 
@@ -605,6 +1355,65 @@ pauseButton.addEventListener(
   },
   false
 );
+
+// clav
+// Play/pause the audio
+playButton1.addEventListener(
+  "click",
+  () => {
+    if (!audioCtx) {
+      // First user interaction: we initialize the audio context
+      
+    }
+
+    // If context is in suspended state (autoplay policy), we resume it
+    // if (audioCtx.state === "suspended") {
+    //   audioCtx.resume();
+    // }
+
+    if (playButton1.dataset.playing === "false") {
+      audioElement1.play();
+      playButton1.dataset.playing = "true";
+      // if track is playing pause it
+    } else if (playButton1.dataset.playing === "true") {
+      audioElement1.pause();
+      playButton1.dataset.playing = "false";
+    }
+
+    let state = playButton1.getAttribute("aria-checked") === "true";
+    playButton1.setAttribute("aria-checked", state ? "false" : "true");
+  },
+  false
+);
+pauseButton1.addEventListener(
+  "click",
+  () => {
+    if (!audioCtx) {
+      // First user interaction: we initialize the audio context
+      init();
+    }
+
+    // If context is in suspended state (autoplay policy), we resume it
+    if (audioCtx.state === "suspended") {
+      audioCtx.resume();
+    }
+
+    if (playButton1.dataset.playing === "false") {
+      audioElement1.play();
+      playButton1.dataset.playing = "true";
+      // if track is playing pause it
+    } else if (playButton1.dataset.playing === "true") {
+      audioElement1.pause();
+      playButton1.dataset.playing = "false";
+    }
+
+    let state = playButton1.getAttribute("aria-checked") === "true";
+    playButton1s.setAttribute("aria-checked", state ? "false" : "true");
+  },
+  false
+);
+
+
 </script>
 
  </body>
